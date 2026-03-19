@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akil Store - Premium Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #f093fb;
+            --bg-dark: #0a0b10;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --neon-blue: 0 0 15px rgba(0, 242, 254, 0.6);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 40%);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .owner-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 4px 15px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: var(--neon-blue);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin: 20px 0 5px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-title {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .list-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--primary);
+            box-shadow: var(--neon-blue);
+        }
+
+        .item-info {
+            text-align: left;
+        }
+
+        .item-info h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        .item-info p {
+            margin: 4px 0 0;
+            font-size: 0.75rem;
+            color: #ccc;
+        }
+
+        .price-tag {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: #000;
+            font-weight: 800;
+            font-family: 'Orbitron', sans-serif;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .dot {
+            height: 6px;
+            width: 6px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 8px #00ff88;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <span class="owner-badge">Owner: Akil</span>
+        <h1>AKIL STORE</h1>
+        <p class="sub-title">Premium Digital Service & Hosting</p>
+
+        <div class="list-container">
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+PANEL+UNLIMITED+1K" class="item-card">
+                <div class="item-info">
+                    <h3>PANEL UNLI</h3>
+                    <p>Jalankan Semua Script Bot WA</p>
+                </div>
+                <div class="price-tag">1K</div>
+            </a>
+
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+BOT+MINECRAFT+5K" class="item-card">
+                <div class="item-info">
+                    <h3>BOT MINECRAFT</h3>
+                    <p>AFK / Spam Bot (Sternos OK)</p>
+                </div>
+                <div class="price-tag">5K</div>
+            </a>
+
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+NOKOS+INDO+5K" class="item-card">
+                <div class="item-info">
+                    <h3>NOKOS INDO</h3>
+                    <p>Buat / Verifikasi Nomor Baru</p>
+                </div>
+                <div class="price-tag">5K</div>
+            </a>
+
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+PROMPT+DEEPSEEK/GEMINI+2K" class="item-card">
+                <div class="item-info" style="border-left: 2px solid var(--accent); padding-left: 10px;">
+                    <h3>PROMPT AI</h3>
+                    <p>Deepseek / Gemini Super Akurat</p>
+                </div>
+                <div class="price-tag" style="background: var(--accent);">2K</div>
+            </a>
+        </div>
+
+        <div class="footer-note">
+            <span class="dot"></span> Online Service • Trusted by Akil
+        </div>
+    </div>
+
+</body>
+</html>
