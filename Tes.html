@@ -28,6 +28,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden;
         }
 
         .container {
@@ -40,6 +41,13 @@
             padding: 40px 25px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            transition: 0.5s;
+        }
+
+        /* Saat Modal Aktif, Background Blur */
+        body.modal-open .container {
+            filter: blur(8px) scale(0.95);
+            pointer-events: none;
         }
 
         .owner-badge {
@@ -86,6 +94,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
         }
 
         .item-card:hover {
@@ -95,23 +104,9 @@
             box-shadow: var(--neon-blue);
         }
 
-        .item-info {
-            text-align: left;
-        }
-
-        .item-info h3 {
-            margin: 0;
-            font-size: 0.95rem;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-            color: var(--primary);
-        }
-
-        .item-info p {
-            margin: 4px 0 0;
-            font-size: 0.75rem;
-            color: #ccc;
-        }
+        .item-info { text-align: left; }
+        .item-info h3 { margin: 0; font-size: 0.95rem; font-family: 'Orbitron', sans-serif; color: var(--primary); }
+        .item-info p { margin: 4px 0 0; font-size: 0.75rem; color: #ccc; }
 
         .price-tag {
             background: linear-gradient(45deg, var(--secondary), var(--primary));
@@ -121,26 +116,80 @@
             padding: 5px 12px;
             border-radius: 12px;
             font-size: 0.85rem;
-            min-width: 40px;
-            text-align: center;
         }
 
-        .footer-note {
-            margin-top: 30px;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 1px;
+        /* MODAL STYLES */
+        #modalOverlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
         }
 
-        .dot {
-            height: 6px;
-            width: 6px;
-            background-color: #00ff88;
+        .modal-content {
+            width: 85%;
+            max-width: 350px;
+            background: #12141d;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            padding: 25px;
+            position: relative;
+            box-shadow: var(--neon-blue);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -15px; right: -15px;
+            width: 35px; height: 35px;
+            background: var(--primary);
+            color: #000;
             border-radius: 50%;
-            display: inline-block;
-            margin-right: 5px;
-            box-shadow: 0 0 8px #00ff88;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: var(--neon-blue);
         }
+
+        .modal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .modal-item {
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .modal-item:hover {
+            border-color: var(--primary);
+            background: rgba(0, 242, 254, 0.1);
+        }
+
+        .footer-note { margin-top: 30px; font-size: 0.7rem; color: rgba(255, 255, 255, 0.3); }
+        .dot { height: 6px; width: 6px; background-color: #00ff88; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 8px #00ff88; }
     </style>
 </head>
 <body>
@@ -151,15 +200,16 @@
         <p class="sub-title">Premium Digital Service & Hosting</p>
 
         <div class="list-container">
-            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+PANEL+UNLIMITED+1K" class="item-card">
+            <!-- PANEL BUTTON (Triggers Modal) -->
+            <div class="item-card" onclick="openModal()">
                 <div class="item-info">
-                    <h3>PANEL UNLI</h3>
-                    <p>Jalankan Semua Script Bot WA</p>
+                    <h3>PANEL</h3>
+                    <p>Pilih paket Panel terbaik kamu</p>
                 </div>
-                <div class="price-tag">1K</div>
-            </a>
+                <div class="price-tag">Cek</div>
+            </div>
 
-            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+BOT+MINECRAFT+5K" class="item-card">
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+order+BOT+MINECRAFT+5K" class="item-card">
                 <div class="item-info">
                     <h3>BOT MINECRAFT</h3>
                     <p>AFK / Spam Bot (Sternos OK)</p>
@@ -167,7 +217,7 @@
                 <div class="price-tag">5K</div>
             </a>
 
-            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+NOKOS+INDO+5K" class="item-card">
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+order+NOKOS+INDO+5K" class="item-card">
                 <div class="item-info">
                     <h3>NOKOS INDO</h3>
                     <p>Buat / Verifikasi Nomor Baru</p>
@@ -175,7 +225,7 @@
                 <div class="price-tag">5K</div>
             </a>
 
-            <a href="https://wa.me/6283141285734?text=Halo+Akil,+saya+mau+order+PROMPT+DEEPSEEK/GEMINI+2K" class="item-card">
+            <a href="https://wa.me/6283141285734?text=Halo+Akil,+order+PROMPT+AI+2K" class="item-card">
                 <div class="item-info" style="border-left: 2px solid var(--accent); padding-left: 10px;">
                     <h3>PROMPT AI</h3>
                     <p>Deepseek / Gemini Super Akurat</p>
@@ -188,6 +238,45 @@
             <span class="dot"></span> Online Service • Trusted by Akil
         </div>
     </div>
+
+    <!-- MODAL OVERLAY -->
+    <div id="modalOverlay">
+        <div class="modal-content">
+            <div class="close-btn" onclick="closeModal()">X</div>
+            <h3 style="font-family: 'Orbitron'; color: var(--primary); margin-top: 10px;">PILIH PAKET</h3>
+            <div class="modal-list">
+                <a href="https://wa.me/6283141285734?text=Order+PANEL+UNLI+1K" class="modal-item">
+                    <span>PANEL UNLI</span> <span>1K</span>
+                </a>
+                <a href="https://wa.me/6283141285734?text=Order+RESELLER+PANEL+2K" class="modal-item">
+                    <span>RESELLER</span> <span>2K</span>
+                </a>
+                <a href="https://wa.me/6283141285734?text=Order+ADP+PANEL+3K" class="modal-item">
+                    <span>ADP</span> <span>3K</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modalOverlay').style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        // Close modal if clicking outside the box
+        window.onclick = function(event) {
+            let modal = document.getElementById('modalOverlay');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 
 </body>
 </html>
